@@ -353,3 +353,11 @@ int get_difficulty() {
     
     return choice;
 }
+
+// Ask if player wants to play again
+bool play_again() {
+    char choice;
+    printf("\nDo you want to play again? (Y/N): ");
+    scanf(" %c", &choice);
+    return (choice == 'Y' || choice == 'y');
+}
