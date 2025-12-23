@@ -1,3 +1,5 @@
+The maze game
+---
 Description
 Maze Chase is a terminal-based strategy game where you play as a thief trying to escape through a 16x16 grid maze while being pursued by a policeman. The game features:
 
@@ -10,7 +12,7 @@ Maze Chase is a terminal-based strategy game where you play as a thief trying to
 * Smart AI pathfinding in Hard mode
 
 * Distance-based random placement system
-
+---
 Prerequisites
 To compile and run this game, you need:
 For Linux/Mac:
@@ -30,7 +32,7 @@ For Windows:
   * Option 1 - MinGW: Download from MinGW-w64
 
   * Option 2 - WSL: Install Ubuntu from Microsoft Store, then install GCC
-
+---
 Installation & Compilation
 Step 1: Download the Files
 Make sure you have these files in the same directory:
@@ -77,7 +79,7 @@ If compilation is successful, you'll see no errors and a new executable file wil
 * Linux/Mac: maze_game
 
 * Windows: maze_game.exe
-
+---
 Running the Game
 On Linux/Mac/WSL:
 
@@ -92,6 +94,7 @@ maze_game.exe
 ```
 
 Or simply double-click the executable file.
+---
 How to Play
 Starting the Game
 
@@ -135,7 +138,7 @@ Starting the Game
    * D or d - Move RIGHT (→)
 
    Press Enter after typing your move.
-
+---
 Game Symbols
 Symbol Meaning T Thief (You) P Policeman (Computer) W Wall (Cannot pass through) E Escape Point (Your goal!) Empty cell Safe to move
 Game Rules
@@ -153,7 +156,7 @@ Movement Rules
 * ❌ Cannot move outside the grid boundaries
 
 * 🔄 Game is turn-based: You move → Policeman moves → You move → ...
-
+---
 Difficulty Modes
 Easy Mode (1):
 
@@ -180,7 +183,7 @@ Initial Placement
 * Thief starts at least 16 squares from Escape Point
 
 * Ensures fair gameplay with time to plan your route
-
+---
 Troubleshooting
 Problem: Screen doesn't clear between moves
 Solution for Windows users: Open main.c and replace:
@@ -231,6 +234,8 @@ Easy Mode:
 * Random selection from all valid adjacent cells
 
 * Time Complexity: O(1)
+
+---
 
 Hard Mode:
 
@@ -303,11 +308,6 @@ Advanced Technique:
 
 * Make your final escape run when policeman is trapped
 
-Credits
-Project: Programming for Engineers - Fall 2025-2026\
-Language: C\
-Platform: Cross-platform (Linux, Mac, Windows)
-Support
 If you encounter any issues not covered in the Troubleshooting section:
 
 1. Verify all prerequisites are installed
@@ -318,4 +318,4 @@ If you encounter any issues not covered in the Troubleshooting section:
 
 4. Try compiling with verbose output: gcc -o maze_game main.c -std=c99 -v
 
-Good luck escaping the maze! 🏃💨👮
+Good luck escaping the maze!
