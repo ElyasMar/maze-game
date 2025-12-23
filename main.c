@@ -168,43 +168,97 @@ void draw_maze() {
     printf("  T = Thief (You)  |  P = Policeman  |  E = Escape Point\n\n");
     
     // Top border
-    printf("  +");
+    printf("    ");
     for (int j = 0; j < SIZE; j++) {
-        printf("--");
+        printf("+---");
     }
     printf("+\n");
     
-    // Maze content
+    // Maze content with cell boundaries
     for (int i = 0; i < SIZE; i++) {
-        printf("%2d|", i + 1);
+        // Row number
+        printf(" %2d ", i + 1);
+        
+        // Cell content
         for (int j = 0; j < SIZE; j++) {
+            printf("|");
             if (i == thief_pos.row && j == thief_pos.col) {
-                printf(" T");
+                printf(" T ");
             } else if (i == police_pos.row && j == police_pos.col) {
-                printf(" P");
+                printf(" P ");
             } else if (maze[i][j] == WALL) {
-                printf("██");
+                printf(" W ");
             } else if (i == ESCAPE_ROW && j == ESCAPE_COL) {
-                printf(" E");
+                printf(" E ");
             } else {
-                printf("  ");
+                printf("   ");
             }
         }
         printf("|\n");
+        
+        // Horizontal line after each row
+        printf("    ");
+        for (int j = 0; j < SIZE; j++) {
+            printf("+---");
+        }
+        printf("+\n");
     }
     
-    // Bottom border
-    printf("  +");
+    // Column numbers
+    printf("    ");
     for (int j = 0; j < SIZE; j++) {
-        printf("--");
-    }
-    printf("+\n");
-    
-    printf("   ");
-    for (int j = 0; j < SIZE; j++) {
-        printf("%2d", j + 1);
+        printf("  %2d", j + 1);
     }
     printf("\n\n");
+}
+
+// Get player's move
+void get_player_move() {
+    char move;
+    bool valid = false;
+    
+    while (!valid) {
+        printf("Your move (W=up, S=down, A=left, D=right): ");
+        scanf(" %c", &move);
+        
+        int new_row = thief_pos.row;
+        int new_col = thief_pos.col;
+        
+        switch (move) {
+            case 'w':
+            case 'W':
+                new_row--;
+                break;
+            case 's':
+            case 'S':
+                new_row++;
+                break;
+            case 'a':
+            case 'A':
+                new_col--;
+                break;
+            case 'd':
+            case 'D':
+                new_col++;
+                break;
+            default:
+                printf("Invalid input! Use W, A, S, or D.\n");
+                continue;
+        }
+        
+        if (is_valid_move(new_row, new_col)) {
+            // Update maze
+            maze[thief_pos.row][thief_pos.col] = EMPTY;
+            if (new_row == ESCAPE_ROW && new_col == ESCAPE_COL) {
+                maze[new_row][new_col] = ESCAPE;
+            }
+            thief_pos.row = new_row;
+            thief_pos.col = new_col;
+            valid = true;
+        } else {
+            printf("Invalid move! You cannot go through walls or out of bounds.\n");
+        }
+    }
 }
 
 // Get player's move
